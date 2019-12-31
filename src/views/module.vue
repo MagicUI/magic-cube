@@ -10,23 +10,14 @@
 </template>
 
 <script>
-
+import BaseModList from './baseModList.js';
 export default {
   name: 'module',
   components: {
   },
   data () {
     return {
-      moduleList: [{
-        name: '单图模块',
-        type: 'onePic'
-      }, {
-        name: '双图模块',
-        type: 'twoPic'
-      }, {
-        name: '锚点模块',
-        type: 'anchorPic'
-      }]
+        moduleList: BaseModList.list
     }
   },
   methods: {

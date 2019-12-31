@@ -13,7 +13,18 @@
                         @drop="_drop(index, $event)">
                     </div>
                 </div>
-                <div class="preview-module">{{obj.name}}-{{index}}</div>
+                <div class="preview-module">
+                    <div class="preview-module-edit">
+                        <span class="operate edit" @click="_edit(index)">edit</span>
+                        <span v-if="index !== 0" class="operate up" @click="_upModule(index)">up</span>
+                        <span v-if="index !== decorationModList.length -1 " class="operate down" @click="_downModule(index)">down</span>
+                        <span class="operate x" @click="_deleteModule(index)">del</span>
+                    </div>
+                    <c-title v-if="obj.type === 'title'" :moduleInfo="obj"></c-title>
+                    <c-text v-if="obj.type === 'text'" :moduleInfo="obj"></c-text>
+                    <c-one-pic v-if="obj.type === 'onePic'" :moduleInfo="obj"></c-one-pic>
+                    <c-two-pic v-if="obj.type === 'twoPic'" :moduleInfo="obj"></c-two-pic>
+                </div>
             </div>
             <div class="preview-receive-last"
                 :class="{'preview-receiving preview-receiving-last': lastReceiving}"
@@ -27,10 +38,18 @@
 </template>
 
 <script>
+import CTitle from '../components/modules/title.vue';
+import CText from '../components/modules/text.vue';
+import COnePic from '../components/modules/onePic.vue';
+import CTwoPic from '../components/modules/twoPic.vue';
 
 export default {
     name: 'preview',
     components: {
+        COnePic,
+        CTwoPic,
+        CTitle,
+        CText
     },
     data(){
         return{
@@ -93,6 +112,29 @@ export default {
                 });
             });
             this.lastReceiving = false;
+        },
+        _deleteModule(index){
+            this.$store._actions.deleteModule[0]({
+                deleteIndex: index
+            });
+        },
+        _upModule(index){
+            this.$store._actions.moveModule[0]({
+                moveIndex: index,
+                direction: 'up'
+            });
+        },
+        _downModule(index){
+            this.$store._actions.moveModule[0]({
+                moveIndex: index,
+                direction: 'down'
+            });
+        },
+        _edit(index){
+            this.$store._actions.setEditModInfo[0]({
+                editIndex: index,
+                editModule: this.decorationModList[index]
+            })
         }
     },
 }
@@ -115,7 +157,7 @@ export default {
         overflow-y: scroll;
     }
     &-receive{
-        height: 10px;
+        // height: 10px;
         position: relative;
         &-pending{
             position: absolute;
@@ -139,10 +181,31 @@ export default {
     &-module{
         background:burlywood;
         width: 100%;
-        height: 100px;
-        line-height: 100px;
         color: #fff;
         margin: auto;
+        position: relative;
+        &-edit{
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: none;
+            height: 30px;
+            flex-direction: row;
+            .operate{
+                flex: 1;
+                width: 40px;
+                height: 30px;
+                line-height: 30px;
+                background: slategrey;
+                margin-left: 5px;
+                cursor: pointer;
+            }
+        }
+        &:hover{
+            .preview-module-edit{
+                display: flex;
+            }
+        }
     }
 }
 </style>>
