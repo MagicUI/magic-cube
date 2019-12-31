@@ -46,10 +46,11 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "@vue/standard",
       "@vue/typescript"
     ],
-    "rules": {},
+    "rules": {
+      "no-tabs": [0]
+    },
     "parserOptions": {
       "parser": "@typescript-eslint/parser"
     },
