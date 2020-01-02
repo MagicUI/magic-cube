@@ -48,7 +48,7 @@ export default {
       handleStringChange(obj){
           console.log(obj)
         //   let models = tihs.formList.
-        let editModule = this.$store.state.editModule || {};
+        let editModule = JSON.parse(JSON.stringify(this.$store.state.editModule)) || {};
         let schemaData = editModule.schema || {};
         let formData = schemaData.formData || {};
         formData[obj.formName].models[obj.modelIndex][obj.modelKey] = obj.modelValue;

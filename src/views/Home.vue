@@ -6,7 +6,7 @@
 		<div class="home-center">
 			<Preview></Preview>
 		</div>
-		<div class="home-right">
+		<div class="home-right"  v-if="editing">
 			<Edit></Edit>
 		</div>
 
@@ -17,6 +17,7 @@
 import Module from '../views/module.vue'
 import Preview from '../views/preview.vue'
 import Edit from '../views/edit.vue'
+import designData from '../../data/designData.js';
 
 export default {
   name: 'home',
@@ -24,7 +25,18 @@ export default {
     Module,
     Preview,
     Edit
-  }
+  },
+  computed: {
+      editing(){
+          return this.$store.state.editing
+      }
+  },
+  mounted() {
+    //   初始化数据
+    this.$store._actions.initDecorationModList[0]({
+        list: designData.list
+    });
+  },
 }
 </script>
 
@@ -50,6 +62,7 @@ export default {
         width: 300px;
         height: 100%;
         border-left: 1px solid silver;
+        overflow: auto;
     }
 }
 </style>

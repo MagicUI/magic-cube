@@ -22,6 +22,10 @@ export default {
   },
   methods: {
     _dragstart (index, obj, event) {
+        if(this.$store.state.editing){
+                alert('请先保存编辑内容');
+                return;
+            }
       // 设置拖拽内容和状态
       this.$store._actions.setDragModInfo[0]({
         draggingModule: obj,

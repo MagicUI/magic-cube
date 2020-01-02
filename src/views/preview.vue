@@ -114,17 +114,29 @@ export default {
             this.lastReceiving = false;
         },
         _deleteModule(index){
+            if(this.$store.state.editing){
+                alert('请先保存编辑内容');
+                return;
+            }
             this.$store._actions.deleteModule[0]({
                 deleteIndex: index
             });
         },
         _upModule(index){
+            if(this.$store.state.editing){
+                alert('请先保存编辑内容');
+                return;
+            }
             this.$store._actions.moveModule[0]({
                 moveIndex: index,
                 direction: 'up'
             });
         },
         _downModule(index){
+            if(this.$store.state.editing){
+                alert('请先保存编辑内容');
+                return;
+            }
             this.$store._actions.moveModule[0]({
                 moveIndex: index,
                 direction: 'down'
@@ -133,6 +145,7 @@ export default {
         _edit(index){
             this.$store._actions.setEditModInfo[0]({
                 editIndex: index,
+                editing: true,
                 editModule: this.decorationModList[index]
             })
         }
