@@ -155,18 +155,23 @@ export default {
 
 <style lang="less">
 .preview{
-    background: url(http://s17.mogucdn.com/p2/160901/upload_7geajf3a3b7h461a38h4k3el61988_261x529.png) no-repeat;
-        background-size: auto 100%;
-        width: 400px;
-        height: 800px;
-        margin: 0 auto;
-        margin-top: 30px;
-        overflow: hidden;
+    background: #f6f6f6;
+    box-shadow: 0 0 15px 0 rgba(60,80,123,.2);
+    // background: url(http://s5.mogucdn.com/mlcdn/c45406/200103_6b1g8l3l9k8k5g9eibha487992k26_430x875.png) no-repeat;
+    // background-size: auto 100%;
+    // width: 400px;
+    // height: 800px;
+    width: 340px;
+    height: 604px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    overflow: hidden;
     &-view{
         width: 340px;
         height: 604px;
         margin: 0 auto;
-        margin-top: 94px;
+        // margin-top: 94px;
         overflow-y: scroll;
     }
     &-receive{

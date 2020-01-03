@@ -45,36 +45,39 @@
             this._close();
         }
     },
-    }
-    </script>
+}
+</script>
 
-    <style lang="less">
-    .edit{
+<style lang="less" scoped>
+.edit{
     position: relative;
-    height: 100%;
+    min-height: calc(100%-50px);
+    padding-bottom: 50px;
     &-operate-box{
-        position: absolute;
-        left: 0;
+        position: fixed;
         right: 0;
         bottom: 0;
+        width: 300px;
         height: 50px;
         line-height: 50px;
-        border-top: 1px solid bisque;
         display: flex;
         cursor: pointer;
     }
     &-operate{
         flex-grow: 1;
-        border-right: 1px solid bisque;
         color: #fff;
-        background: chocolate;
+        color: #909399;
+        background: #f4f4f5;
+        font-size: 14px;
+        font-weight: 500;
         &:nth-child(2){
-            background: blanchedalmond;
-            color: #000;
+            color: #67c23a;
+            background: #f0f9eb;
         }
         &:last-child{
-            border-right: none;
+            color: #409eff;
+            background: #ecf5ff;
         }
     }
-    }
-    </style>
+}
+</style>

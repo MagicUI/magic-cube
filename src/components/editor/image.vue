@@ -51,6 +51,7 @@ export default {
         padding-left: 10px;
         background-repeat: no-repeat;
         background-position: 98% center;
+        outline: none;
     }
 }
 </style>
