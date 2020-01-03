@@ -153,22 +153,19 @@ export default {
 <style lang="less">
 .preview{
     background: #f6f6f6;
-    box-shadow: 0 0 15px 0 rgba(60,80,123,.2);
-    // background: url(http://s5.mogucdn.com/mlcdn/c45406/200103_6b1g8l3l9k8k5g9eibha487992k26_430x875.png) no-repeat;
-    // background-size: auto 100%;
-    // width: 400px;
-    // height: 800px;
-    width: 340px;
-    height: 604px;
+    background: url("../assets/iphone.png") no-repeat;
+    background-size: 100% 100%;
+    width: 460px;
+    height: 875px;
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 30px;
     overflow: hidden;
     &-view{
-        width: 340px;
-        height: 604px;
+        width: 377px;
+        height: 669px;
         margin: 0 auto;
-        // margin-top: 94px;
+        margin-top: 104px;
         overflow-y: scroll;
     }
     &-receive{
