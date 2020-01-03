@@ -20,10 +20,7 @@
                         <span v-if="index !== decorationModList.length -1 " class="operate down" @click="_downModule(index)">down</span>
                         <span class="operate x" @click="_deleteModule(index)">del</span>
                     </div>
-                    <c-title v-if="obj.type === 'title'" :moduleInfo="obj"></c-title>
-                    <c-text v-if="obj.type === 'text'" :moduleInfo="obj"></c-text>
-                    <c-one-pic v-if="obj.type === 'onePic'" :moduleInfo="obj"></c-one-pic>
-                    <c-two-pic v-if="obj.type === 'twoPic'" :moduleInfo="obj"></c-two-pic>
+                    <component :is="'c-' + obj.type" :moduleInfo="obj"></component>
                 </div>
             </div>
             <div class="preview-receive-last"
@@ -38,6 +35,7 @@
 </template>
 
 <script>
+import BaseModList from './baseModList.js';
 
 export default {
     name: 'preview',
@@ -56,10 +54,9 @@ export default {
         }
     },
     beforeCreate() {
-        this.$options.components['COnePic'] = window.magicOnePic;
-        this.$options.components['CTwoPic'] = window.magicTwoPic;
-        this.$options.components['CText'] = window.magicText;
-        this.$options.components['CTitle'] = window.magicTitle;
+        BaseModList.list.forEach((obj) => {
+            this.$options.components[`C${obj.type}`] = window[`magic${obj.type}`]
+        });
     },
     methods: {
         _dragover(index, event){

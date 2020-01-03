@@ -1,7 +1,7 @@
 export default {
     list: [{
         name: '标题模块',
-        type: 'title',
+        type: 'Title',
         schema: {
             formData: {
                 modInfo:{
@@ -81,7 +81,7 @@ export default {
         }
       },{
         name: '文本模块',
-        type: 'text',
+        type: 'Text',
         schema: {
             formData: {
                 modInfo:{
@@ -161,7 +161,7 @@ export default {
         }
       },{
         name: '单图模块',
-        type: 'onePic',
+        type: 'OnePic',
         schema: {
             formData: {
                 modInfo:{
@@ -241,7 +241,7 @@ export default {
         }
       }, {
         name: '双图模块',
-        type: 'twoPic',
+        type: 'TwoPic',
         schema: {
             formData: {
                 modInfo:{
