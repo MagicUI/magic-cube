@@ -38,19 +38,10 @@
 </template>
 
 <script>
-import CTitle from '../components/modules/title.vue';
-import CText from '../components/modules/text.vue';
-import COnePic from '../components/modules/onePic.vue';
-import CTwoPic from '../components/modules/twoPic.vue';
 
 export default {
     name: 'preview',
-    components: {
-        COnePic,
-        CTwoPic,
-        CTitle,
-        CText
-    },
+    components: {},
     data(){
         return{
             lastReceiving: false
@@ -63,6 +54,12 @@ export default {
         isDragging(){
             return this.$store.state.isDragging;
         }
+    },
+    beforeCreate() {
+        this.$options.components['COnePic'] = window.magicOnePic;
+        this.$options.components['CTwoPic'] = window.magicTwoPic;
+        this.$options.components['CText'] = window.magicText;
+        this.$options.components['CTitle'] = window.magicTitle;
     },
     methods: {
         _dragover(index, event){
