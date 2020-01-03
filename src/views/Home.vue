@@ -41,7 +41,11 @@ export default {
 </script>
 
 <style lang="less">
-
+body {
+    background: #ebedf1;
+    height: 100%;
+    overflow: hidden;
+}
 .home{
     position: absolute;
     top: 0;
@@ -50,19 +54,30 @@ export default {
     right: 0;
     display: flex;
 	&-left{
+        position: fixed;
 		width: 300px;
         height: 100%;
-        border-right: 1px solid silver;
+        border-right: 1px solid #ccd5db;
+        background: #fff;
     }
     &-center{
+        width: 100%;
         height: 100%;
+        margin: 0 300px;
         flex: 1;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
     &-right{
+        position: fixed;
+        right: 0;
         width: 300px;
         height: 100%;
-        border-left: 1px solid silver;
+        border-left: 1px solid #ccd5db;
         overflow: auto;
+        background: #fff;
     }
 }
 </style>

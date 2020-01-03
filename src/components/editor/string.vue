@@ -49,6 +49,7 @@ export default {
         height: 36px;
         line-height: 36px;
         padding-left: 10px;
+        outline: none;
         background-repeat: no-repeat;
         background-position: 98% center;
     }
