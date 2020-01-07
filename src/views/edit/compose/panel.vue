@@ -5,12 +5,13 @@
                 <div class="c-panel-form" v-for="(field, fieldIndex) in obj.content.fields" v-bind:key="fieldIndex">
                     <div class="c-panel-title">{{field.title}}</div>
                     <component
-                    :formName="obj.formName"
-                    :is="'c-'+field.type"
-                    :modelIndex="modelIndex"
-                    :modelValue="model[field.name]"
-                    :modelKey="field.name"
-                    v-on:handleStringChange="handleStringChange"
+                        :formName="obj.formName"
+                        :is="'c-'+field.type"
+                        :modelField="field"
+                        :modelIndex="modelIndex"
+                        :modelValue="model[field.name]"
+                        :modelKey="field.name"
+                        v-on:handleStringChange="handleStringChange"
                     >
                     </component>
                 </div>
@@ -21,18 +22,22 @@
 
 <script>
 
-import CString from './string.vue'
-import CImage from './image.vue'
-// import SdSelect from '../select'
-// import SdTextArea from '../textarea'
-// import SdColor from '../colorpicker'
-// import SdFontSize from '../../h5/fontsize'
+import CString from './type/string.vue'
+import CImage from './type/image.vue'
+import CColor from './type/color.vue'
+import CSelect from './type/select.vue'
+import CSize from './type/size.vue'
+import CUrl from './type/url.vue'
 
 export default {
   name: 'cPanel',
   components: {
       CString,
-      CImage
+      CImage,
+      CColor,
+      CSelect,
+      CSize,
+      CUrl
   },
   props: {
     formList: {
@@ -46,7 +51,6 @@ export default {
   },
   methods: {
       handleStringChange(obj){
-          console.log(obj)
         //   let models = tihs.formList.
         let editModule = JSON.parse(JSON.stringify(this.$store.state.editModule)) || {};
         let schemaData = editModule.schema || {};
@@ -67,7 +71,8 @@ export default {
         text-align: left;
     }
     &-title{
-        margin-bottom: 5px;
+        margin: 30px 0 10px;
+        color: #333;
     }
 }
 </style>

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import CEditor from '../components/editor/index.vue';
+    import CEditor from './compose/editor.vue';
     export default {
     name: 'edit',
     components: {

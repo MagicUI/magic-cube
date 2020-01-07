@@ -14,15 +14,15 @@ export default {
                     },{
                         name: "color",
                         title: "标题颜色",
-                        type: 'string'
+                        type: 'color'
                     },{
                         name: "fontSize",
                         title: "标题大小",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "link",
                         title: "跳转链接",
-                        type: 'string'
+                        type: 'url'
                     }],
                     minRow: 1,
                     maxRow: 1,
@@ -43,27 +43,27 @@ export default {
                     },{
                         name: "marginTop",
                         title: "上边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "marginBottom",
                         title: "下边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "paddingLeft",
                         title: "左内边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "paddingTop",
                         title: "上内边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "paddingRight",
                         title: "右内边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "paddingBottom",
                         title: "下内边距",
-                        type: 'string'
+                        type: 'size'
                     }],
                     minRow: 1,
                     maxRow: 1,
@@ -94,11 +94,12 @@ export default {
                     },{
                         name: "color",
                         title: "文本颜色",
-                        type: 'string'
+                        type: 'color'
                     },{
                         name: "fontSize",
                         title: "文本大小",
-                        type: 'string'
+                        type: 'size',
+                        "units": ['px','rem']
                     },{
                         name: "textAlign",
                         title: "对齐方式",
@@ -119,31 +120,31 @@ export default {
                     fields: [{
                         name: "bgColor",
                         title: "模块背景",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "marginTop",
                         title: "上边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "marginBottom",
                         title: "下边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "paddingLeft",
                         title: "左内边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "paddingTop",
                         title: "上内边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "paddingRight",
                         title: "右内边距",
-                        type: 'string'
+                        type: 'size'
                     },{
                         name: "paddingBottom",
                         title: "下内边距",
-                        type: 'string'
+                        type: 'size'
                     }],
                     minRow: 1,
                     maxRow: 1,
@@ -182,7 +183,7 @@ export default {
                     },{
                         name: "link",
                         title: "跳转链接",
-                        type: 'string'
+                        type: 'url'
                     }],
                     minRow: 1,
                     maxRow: 1,
@@ -262,7 +263,7 @@ export default {
                     },{
                         name: "link1",
                         title: "跳转链接1",
-                        type: 'string'
+                        type: 'url'
                     },{
                         name: "img2",
                         title: "图片2",
@@ -270,7 +271,7 @@ export default {
                     },{
                         name: "link2",
                         title: "跳转链接2",
-                        type: 'string'
+                        type: 'url'
                     }],
                     minRow: 1,
                     maxRow: 1,
@@ -289,7 +290,7 @@ export default {
                     fields: [{
                         name: "bgColor",
                         title: "模块背景",
-                        type: 'string'
+                        type: 'color'
                     },{
                         name: "marginTop",
                         title: "上边距",
