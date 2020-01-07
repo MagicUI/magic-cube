@@ -15,8 +15,8 @@
 
 <script>
 import Module from '../views/module.vue'
-import Preview from '../views/preview.vue'
-import Edit from '../views/edit.vue'
+import Preview from '../views/preview/index.vue'
+import Edit from '../views/edit/index.vue'
 import designData from '../../data/designData.js';
 
 export default {

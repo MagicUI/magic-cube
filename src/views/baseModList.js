@@ -14,7 +14,7 @@ export default {
                     },{
                         name: "color",
                         title: "标题颜色",
-                        type: 'string'
+                        type: 'color'
                     },{
                         name: "fontSize",
                         title: "标题大小",
@@ -94,7 +94,7 @@ export default {
                     },{
                         name: "color",
                         title: "文本颜色",
-                        type: 'string'
+                        type: 'color'
                     },{
                         name: "fontSize",
                         title: "文本大小",
@@ -289,7 +289,7 @@ export default {
                     fields: [{
                         name: "bgColor",
                         title: "模块背景",
-                        type: 'string'
+                        type: 'color'
                     },{
                         name: "marginTop",
                         title: "上边距",
