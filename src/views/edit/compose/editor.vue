@@ -47,7 +47,6 @@ function tabPanelsInit (schema) {
         }
         })
     })
-    console.log(tabsPanel)
     return tabsPanel;
 }
 

@@ -2,10 +2,15 @@
     <div class="c-color">
         <Row class="c-color-list">
             <Col span="4" v-for="(item,index) in defaultColorList" :key="index">
-                <span class="color-pick" :class="[item,index==selectedIndex?'selected':'']" @click="selecteColor(index)"></span>
+                <span class="color-pick" :class="[item,item==modelValue?'selected':'']" @click="selecteColor(index)"></span>
             </Col>
             <Col span="8">
-                <ColorPicker class="color-panel" :class="{'selected':defaultColorList.indexOf(color)==-1}" v-model="color" :hue="false" />
+                <ColorPicker 
+                    class="color-panel" 
+                    :class="{'selected':defaultColorList.indexOf(color)==-1}" 
+                    :value="modelValue" 
+                    @on-change="changeColor"
+                    :hue="false" />
             </Col>
         </Row>
     </div>
@@ -14,7 +19,7 @@
 <script>
 
 export default {
-  name: 'cImage',
+  name: 'cColor',
   components: {
   },
   props: {
@@ -35,9 +40,9 @@ export default {
   methods: {
       selecteColor(index) {
           this.selectedIndex = index;
+          this.changeColor(this.defaultColorList[index]);
       },
-      _handleChange(e){
-          let value = e.target.value;
+      changeColor (value) {
           this.$emit('handleStringChange', {
               formName: this.formName,
               modelIndex: this.modelIndex,
