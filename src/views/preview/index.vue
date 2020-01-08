@@ -16,11 +16,16 @@
                         </div>
                     </div>
                     <div class="preview-module">
-                        <div class="preview-module-edit">
+                        <div class="preview-module-edit" v-if="!obj.anchoring">
                             <span class="operate edit" @click="_edit(index)">edit</span>
+                            <span class="operate edit" @click="_anchor(index)">anchor</span>
                             <span v-if="index !== 0" class="operate up" @click="_upModule(index)">up</span>
                             <span v-if="index !== decorationModList.length -1 " class="operate down" @click="_downModule(index)">down</span>
                             <span class="operate x" @click="_deleteModule(index)">del</span>
+                        </div>
+                        <div class="preview-module-anchor" v-if="startAnchor">
+                            <anchor v-if="obj.anchoring" :moduleIndex="index" :moduleData="obj"  :saveAnchor="_saveAnchor" :cancelAnchor="_cancelAnchor"></anchor>
+                            <div v-else class="preview-module-anchor-mask"></div>
                         </div>
                         <component :is="'c-' + obj.type" :moduleInfo="obj"></component>
                     </div>
@@ -40,15 +45,19 @@
 <script>
 import BaseModList from '../baseModList.js';
 import ControlScale from './controlScale.vue';
+import Anchor from './anchor.vue';
 export default {
     name: 'preview',
     components: {
-        ControlScale
+        ControlScale,
+        Anchor
     },
     data(){
         return{
             lastReceiving: false,
-            scaleRate: 0.7
+            scaleRate: 0.7,
+            startAnchor: false,
+            moduleDataBk: {}
         }
     },
     computed: {
@@ -149,8 +158,36 @@ export default {
                 editModule: this.decorationModList[index]
             })
         },
+        _anchor(index){
+            this.startAnchor = true;
+            let temp = this.decorationModList[index];
+                this.moduleDataBk = temp;
+                temp.anchoring = true;
+                this.$store._actions.updateModule[0]({
+                    updateIndex: index,
+                    updateData: temp
+                });
+        },
         changeScale(rate) {
             this.scaleRate = rate;
+        },
+        _saveAnchor(index){
+            this.startAnchor = false;
+            let temp = this.decorationModList[index];
+                temp.anchoring = false;
+                this.$store._actions.updateModule[0]({
+                    updateIndex: index,
+                    updateData: temp
+                });
+        },
+        _cancelAnchor(index){
+            this.startAnchor = false;
+            let temp = this.moduleDataBk;
+                temp.anchoring = false;
+                this.$store._actions.updateModule[0]({
+                    updateIndex: index,
+                    updateData: this.moduleDataBk
+                });
         }
     },
 }
@@ -175,7 +212,7 @@ export default {
         background: url("../../assets/iphone.png") no-repeat;
         background-size: 100% 100%;
         &-view{
-            width: 377px;
+            width: 400px;
             height: 669px;
             margin: 0 auto;
             margin-top: 104px;
@@ -230,6 +267,20 @@ export default {
             &:hover{
                 .preview-module-edit{
                     display: flex;
+                }
+            }
+            &-anchor{
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left:0;
+                right: 0;
+                flex-direction: row;
+                z-index: 9999;
+                &-mask{
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, .6);
                 }
             }
         }
