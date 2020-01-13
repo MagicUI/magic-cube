@@ -22,8 +22,6 @@ export default {
   methods: {
       _handleChange(e){
           let value = e.target.value;
-          console.log(value);
-          
           this.$emit('handleStringChange', {
               formName: this.formName,
               modelIndex: this.modelIndex,
