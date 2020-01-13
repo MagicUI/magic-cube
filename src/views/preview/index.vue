@@ -179,6 +179,14 @@ export default {
                     updateIndex: index,
                     updateData: temp
                 });
+            let saveJson = {
+                list: this.$store.state.decorationModList
+            };
+            let saveString = JSON.stringify(saveJson);
+
+            let FileSaver = require('file-saver');
+            let blob = new Blob([saveString ], {type: "text/plain;charset=utf-8"}); 
+            FileSaver.saveAs(blob, "designData.js");
         },
         _cancelAnchor(index){
             this.startAnchor = false;
